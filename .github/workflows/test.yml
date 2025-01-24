@@ -26,6 +26,9 @@ jobs:
           choco install composer 
           php -v
           composer --version
+      - name: Instalar dependencias
+        run: |
+          choco install mysql --version8.0  
 
 
   test:
