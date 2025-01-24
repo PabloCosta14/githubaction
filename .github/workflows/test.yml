@@ -8,14 +8,26 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Mostrar texto
-        run: echo "Hola mundo"
+        run: echo "Inicio del flujo de trabajo"
 
-
-
-bluid:
+  build:
     runs-on: windows-latest
     needs: [inicio]
     steps:
-      - name: texto
-        run: echo "Construir"
+      - name: Construir
+        run: echo "Construcción completada"
+
+  test:
+    runs-on: windows-latest
+    needs: [inicio]
+    steps:
+      - name: Pruebas
+        run: echo "Pruebas ejecutadas"
+
+  deploy:
+    runs-on: windows-latest
+    needs: [inicio]
+    steps:
+      - name: Despliegue
+        run: echo "Despliegue completado"
 
