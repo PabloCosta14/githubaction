@@ -8,40 +8,37 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Mostrar texto
-        run: echo "Inicio del flujo de trabajo"
+        run: echo "Paso para clonar repositorio a GitHub Actions"
       - name: Checkout
-        uses: actions/checkout@v4.2.2  
-      
-jobs:
+        uses: actions/checkout@v4.2.2
+
   build:
     runs-on: windows-latest
     needs: [inicio]
     steps:
       - name: Mostrar texto
         run: echo "Construir"
-        
       - name: Instalar PHP y Composer en Windows
         run: |
           choco install php --version=8.1
-          choco install composer 
+          choco install composer
           php -v
           composer --version
-      - name: Instalar dependencias
+      - name: Instalar MySql
         run: |
-          choco install mysql --version8.0  
-
+          choco install mysql --version=8.0
+          Start-Service mysqls
 
   test:
     runs-on: windows-latest
-    needs: [inicio]
+    needs: [build]
     steps:
-      - name: Pruebas
-        run: echo "Pruebas ejecutadas"
+      - name: Mostrar texto
+        run: echo "Ejecutar pruebas"
 
   deploy:
     runs-on: windows-latest
-    needs: [inicio]
+    needs: [test]
     steps:
-      - name: Despliegue
-        run: echo "Despliegue completado"
-
+      - name: Mostrar texto
+        run: echo "Desplegar aplicación"
