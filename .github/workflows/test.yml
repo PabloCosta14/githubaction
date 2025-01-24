@@ -12,9 +12,10 @@ jobs:
 
 
 
-build:
+bluid:
     runs-on: windows-latest
     needs: [inicio]
     steps:
       - name: texto
         run: echo "Construir"
+
