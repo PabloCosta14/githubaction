@@ -9,13 +9,24 @@ jobs:
     steps:
       - name: Mostrar texto
         run: echo "Inicio del flujo de trabajo"
-
+      - name: Checkout
+        uses: actions/checkout@v4.2.2  
+      
+jobs:
   build:
     runs-on: windows-latest
     needs: [inicio]
     steps:
-      - name: Construir
-        run: echo "Construcción completada"
+      - name: Mostrar texto
+        run: echo "Construir"
+        
+      - name: Instalar PHP y Composer en Windows
+        run: |
+          choco install php --version=8.1
+          choco install composer 
+          php -v
+          composer --version
+
 
   test:
     runs-on: windows-latest
