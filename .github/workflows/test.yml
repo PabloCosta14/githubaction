@@ -1,0 +1,21 @@
+
+name: Ejemplo CI/CD
+
+on: [push]
+
+jobs:
+      inicio:
+          runs-on: windows-latest 
+                steps:
+                  - name: mostrar texto
+                    run: echo "Hola mundo"
+                                   
+ 
+
+
+
+
+
+
+
+
